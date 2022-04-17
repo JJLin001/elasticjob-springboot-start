@@ -114,9 +114,10 @@ public class JobConfParser implements ApplicationContextAware {
             }
 
             factory.addConstructorArgValue(elasticJobListeners);
+            String registerBeanName = jobName + "SpringJobScheduler";
             DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory) ctx.getAutowireCapableBeanFactory();
-            defaultListableBeanFactory.registerBeanDefinition("SpringJobScheduler", factory.getBeanDefinition());
-            SpringJobScheduler springJobScheduler = (SpringJobScheduler) ctx.getBean("SpringJobScheduler");
+            defaultListableBeanFactory.registerBeanDefinition(registerBeanName, factory.getBeanDefinition());
+            SpringJobScheduler springJobScheduler = (SpringJobScheduler) ctx.getBean(registerBeanName);
             springJobScheduler.init();
             this.logger.info("【" + jobName + "】\t" + jobClass + "\tinit success");
         }

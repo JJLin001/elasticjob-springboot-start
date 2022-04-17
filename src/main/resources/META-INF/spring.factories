@@ -1,2 +1,2 @@
 # Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.kevin.task.autoconfigure.JobParserAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.taotao.autoconfigure.JobParserAutoConfiguration

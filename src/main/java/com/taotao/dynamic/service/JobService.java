@@ -81,9 +81,10 @@ public class JobService {
         //添加监听
         List<BeanDefinition> elasticJobListeners = this.getTargetElasticJobListeners(job);
         factory.addConstructorArgValue(elasticJobListeners);
+        String registerBeanName = job.getJobName() + "SpringJobScheduler";
         DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory) this.ctx.getAutowireCapableBeanFactory();
-        defaultListableBeanFactory.registerBeanDefinition("SpringJobScheduler", factory.getBeanDefinition());
-        SpringJobScheduler springJobScheduler = (SpringJobScheduler) this.ctx.getBean("SpringJobScheduler");
+        defaultListableBeanFactory.registerBeanDefinition(registerBeanName, factory.getBeanDefinition());
+        SpringJobScheduler springJobScheduler = (SpringJobScheduler) this.ctx.getBean(registerBeanName);
         springJobScheduler.init();
         this.logger.info("【" + job.getJobName() + "】\t" + job.getJobClass() + "\tinit success");
     }

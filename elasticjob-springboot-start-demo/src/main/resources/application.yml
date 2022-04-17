@@ -1,0 +1,20 @@
+server:
+  port: 8088
+elastic-job:
+  zk:
+    server-lists: 10.211.55.3:2181
+    namespace: elasticjob-springboot-start-demo
+    max-sleep-time-milliseconds: 3000
+    base-sleep-time-milliseconds: 1000
+spring:
+  application:
+    name: elasticjob-springboot-start-demo # 应用名称
+  # 数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 12345678
+    url: jdbc:mysql://127.0.0.1:3306/elasticjob?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
+  mybatis:
+    configuration:
+      map-underscore-to-camel-case: true # 开启驼峰映射
